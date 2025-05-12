@@ -20,14 +20,16 @@ let apiQuotes = [];
 // Get Quotes from API
 const getQuotes = async function () {
   showLoadingSpinner();
-  const apiUrl = "https://zenquotes.io/api/quotes";
+  const apiUrl = "https://dummyjson.com/quotes";
 
   try {
-    const respond = await fetch(apiUrl);
-    apiQuotes = await respond.json();
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    apiQuotes = data.quotes;
     newQuote();
   } catch (error) {
     console.log("Error fetching quotes:", error);
+    newQuote();
   } finally {
     removeLoadingSpinner();
   }
@@ -41,13 +43,13 @@ const newQuote = function () {
   const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
 
   // Manipulation DOM
-  quoteText.textContent = quote.q;
-  !quote.a
+  quoteText.textContent = quote.quote;
+  !quote.author
     ? (authorText.textContent = "Unknown")
-    : (authorText.textContent = quote.a);
+    : (authorText.textContent = quote.author);
 
   // Check Quote Length to Determine Styling
-  quote.q.length > 120
+  quote.quote.length > 120
     ? quoteText.classList.add("long-quote")
     : quoteText.classList.remove("long-quote");
 
