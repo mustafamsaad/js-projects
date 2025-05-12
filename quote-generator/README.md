@@ -4,7 +4,7 @@ A simple web application that generates and displays random quotes from famous a
 
 ## Features
 
-- Fetches random quotes from an external API
+- Fetches random quotes from the ZenQuotes API
 - Displays the quote and author
 - Share quotes on Twitter with a single click
 - Generate new quotes with a button click
@@ -27,4 +27,4 @@ A simple web application that generates and displays random quotes from famous a
 - CSS3
 - JavaScript
 - Fetch API
-- Quote API
+- ZenQuotes API
